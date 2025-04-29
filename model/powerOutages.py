@@ -13,6 +13,8 @@ class Event:
     _date_event_began: datetime
     _date_event_finished: datetime
     _demand_loss: int
+    _nOre = int
+    _anno = int
 
     @property
     def id(self):
@@ -54,12 +56,21 @@ class Event:
     def demand_loss(self):
         return self._demand_loss
 
+    @property
+    def nOre(self):
+        numero = (self._date_event_finished - self._date_event_began).total_seconds()/3600
+        return numero
+
+    @property
+    def anno(self):
+        return self._date_event_began.year
+
     def __str__(self):
         # return (f"PowerOutage [id={self._id}, nerc={self._nerc_id}, customers_affected={self._customers_affected} "
         #         f"start_time={self._date_event_began}, end_time= {self._date_event_finished}]")
 
         return (f"id={self._id}, customers_affected={self._customers_affected} "
-                f"start_time={self._date_event_began}, end_time= {self._date_event_finished}")
+                f"start_time={self._date_event_began}, end_time= {self._date_event_finished}, nOre = {self.nOre} ")
 
     def __hash__(self):
         return hash(self._id)

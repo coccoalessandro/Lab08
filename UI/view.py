@@ -2,7 +2,7 @@ import flet as ft
 import os
 
 
-class View(ft.UserControl):
+class View():
     def __init__(self, page: ft.Page):
         super().__init__()
         # page stuff
@@ -14,7 +14,7 @@ class View(ft.UserControl):
         self._page.theme_mode = ft.ThemeMode.LIGHT
         page.window_width = 1000  # window's width is 200 px
         page.window_height = 1000
-        page.window_center()
+        # page.window_center()
         # controller (it is not initialized. Must be initialized in the main, after the controller is created)
         self._controller = None
         # graphical elements
